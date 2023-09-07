@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -13,6 +14,15 @@ const ArticlePage = async ({params}) => {
 
   return (
     <>
+    <Head>
+        <title>{post.title}</title>
+        <meta name="description" content={post.content} key="desc" />
+        <meta property="og:title" content={post.title} />
+        <meta
+          property="og:description"
+          content={post.content}
+        />
+      </Head>
         <div className=' w-full max-w-[800px] py-10 px-4 mx-auto'>
             <p className=' mb-5 text-center'>
             <Link href='/'>
