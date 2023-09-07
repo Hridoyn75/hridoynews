@@ -14,6 +14,7 @@ const Card = ({photo, title, content, url, date}) => {
         <div className=' p-3 hover:border-yellow-400 rounded border border-[#ff5724]'>
             <div className=' max-w-full rounded overflow-hidden'>
             <Image 
+            priority
             src={photo}
             alt="Feature Photo"
             width={1920}

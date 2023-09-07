@@ -1,7 +1,24 @@
-import Head from 'next/head'
+
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+
+
+export async function generateMetadata({ params }, parent) {
+
+    const response = await fetch("https://studynews.onrender.com/posts", 
+    { cache: 'no-store' })
+
+    const data = await response.json()
+
+    const post = data.filter(post=>post.id.indexOf(params.id) !== -1)[0]
+   
+    return {
+      title: post.title,
+       description: post.content,
+    }
+  }
+  
 
 const ArticlePage = async ({params}) => {
     const response = await fetch("https://studynews.onrender.com/posts", 
@@ -11,18 +28,8 @@ const ArticlePage = async ({params}) => {
 
     const post = data.filter(post=>post.id.indexOf(params.id) !== -1)[0]
 
-
   return (
     <>
-    <Head>
-        <title>{post.title}</title>
-        <meta name="description" content={post.content} key="desc" />
-        <meta property="og:title" content={post.title} />
-        <meta
-          property="og:description"
-          content={post.content}
-        />
-      </Head>
         <div className=' w-full max-w-[800px] py-10 px-4 mx-auto'>
             <p className=' mb-5 text-center'>
             <Link href='/'>
