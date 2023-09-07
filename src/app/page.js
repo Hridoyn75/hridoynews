@@ -16,6 +16,14 @@ export default async function Home() {
       <div className=' flex flero flex-wrap p-2 md:px-10'>
       {
         data.map((post, index)=>{
+          const date = new Date(post.timestamp);
+
+          const hours = date.getHours() % 12 || 12; // Convert to 12-hour format
+          const minutes = String(date.getMinutes()).padStart(2, "0");
+          const amPm = date.getHours() >= 12 ? "pm" : "am";
+
+          const options = { month: 'long', day: 'numeric', year: 'numeric' };
+          const formattedDate = `${hours}:${minutes} ${amPm}, ${date.toLocaleDateString('en-US', options)}`;
           return(
             <Card 
             key={index}
@@ -23,6 +31,7 @@ export default async function Home() {
             photo={post.photo}
             title={post.title}
             content={post.content}
+            date={formattedDate}
              />
           )
         })
