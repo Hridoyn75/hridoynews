@@ -6,27 +6,23 @@ import React from 'react'
 
 export async function generateMetadata({ params }, parent) {
 
-    const response = await fetch("https://studynews.onrender.com/posts", 
+    const response = await fetch("https://studynews.onrender.com/post/" + params.id , 
     { cache: 'no-store' })
 
     const data = await response.json()
-
-    const post = data.filter(post=>post.id.indexOf(params.id) !== -1)[0]
    
     return {
-      title: post.title,
-       description: post.content,
+      title: data.title,
+       description: data.content,
     }
   }
   
 
 const ArticlePage = async ({params}) => {
-    const response = await fetch("https://studynews.onrender.com/posts", 
+    const response = await fetch("https://studynews.onrender.com/post/" + params.id , 
     { cache: 'no-store' })
 
-    const data = await response.json()
-
-    const post = data.filter(post=>post.id.indexOf(params.id) !== -1)[0]
+    const post = await response.json()
 
   return (
     <>
