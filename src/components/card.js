@@ -9,9 +9,9 @@ const Card = ({photo, title, content, url, date}) => {
     const match = url.match(pattern);
     const id = match[1];
   return (
-    <div className=' p-2 w-full md:w-1/3 lg:w-1/4'>
+    <div className=' p-2 w-full md:w-1/3 lg:w-1/4'> 
         <Link href={'/post/' + id}>
-        <div className=' p-3 hover:border-yellow-400 rounded border border-[#ff5724]'>
+        <div className=' p-3 hover:border-yellow-400 rounded border border-transparent'>
             <div className=' max-w-full rounded overflow-hidden'>
             <Image 
             priority
