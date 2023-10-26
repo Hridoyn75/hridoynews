@@ -6,7 +6,7 @@ import React from 'react'
 
 export async function generateMetadata({ params }, parent) {
 
-    const response = await fetch("https://studynews.onrender.com/post/" + params.id , 
+    const response = await fetch(process.env.NEXT_PUBLIC_API_URL+"/post/" + params.id , 
     { cache: 'no-store' })
 
     const data = await response.json()
@@ -19,7 +19,7 @@ export async function generateMetadata({ params }, parent) {
   
 
 const ArticlePage = async ({params}) => {
-    const response = await fetch("https://studynews.onrender.com/post/" + params.id , 
+    const response = await fetch(process.env.NEXT_PUBLIC_API_URL+"/post/" + params.id , 
     { cache: 'no-store' })
 
     const post = await response.json()

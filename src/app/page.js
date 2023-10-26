@@ -7,7 +7,7 @@ export default async function Home({searchParams}) {
   if(parseInt(page) < 0 || !page) {
     page = 1;
   }
-  const response = await fetch("https://studynews.onrender.com/posts?page=" + page, {
+  const response = await fetch(process.env.NEXT_PUBLIC_API_URL+"/posts?page=" + page, {
     cache: "no-store",
   });
 
